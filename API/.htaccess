@@ -1,0 +1,19 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteRule ^listar /API/views/listar.php [L]
+
+RewriteRule ^crear /API/views/crear.php [L]
+
+RewriteRule ^modificar/([0-9]+)$ /API/views/modificar.php?codigo=$1 [L]
+
+RewriteRule ^eliminar/([0-9]+)$ /API/controller/ctrlUsuario.php?accion=eliminar&url=si&codigo=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ /API/index.php [L]
+
+#Options All -Indexes
+#RewriteRule ^([a-zA-Z0-9/ñÑ-]+)$ /API/index.php
+
+ErrorDocument 403 /API/index.php
